@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public SpriteRenderer spriteRenderer;
+
     public float speed = 5f;
     public float jumpForce = 10f;
     public float dashForce = 20f;
@@ -44,12 +46,21 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
             if (moveInput > 0)
             {
-                lastMove = 1;
-             }
-             else {if(moveInput < 0)
-                    lastMove = -1;
-                }
-            Debug.Log(moveInput);
+            if (lastMove < 0)
+                spriteRenderer.flipX = false;
+
+            lastMove = 1;
+                
+        }
+             else {if(moveInput < 0) {
+                if (lastMove > 0)
+                    spriteRenderer.flipX = true;
+                lastMove = -1;
+                    
+            }
+
+        }
+        Debug.Log(moveInput);
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
         if (Input.GetButtonDown("Jump"))
@@ -141,13 +152,13 @@ public class PlayerController : MonoBehaviour
     void Crouch()
     {
         isCrouching = true;
-        transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z);
+        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y/2, transform.localScale.z);
     }
 
     void StandUp()
     {
         isCrouching = false;
-        transform.localScale = new Vector3(transform.localScale.x, 1f, transform.localScale.z);
+        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 2, transform.localScale.z);
     }
 
     void StartWallSliding()
