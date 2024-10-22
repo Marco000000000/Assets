@@ -206,7 +206,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.286, y: 6.28, z: -0}
-  m_LocalScale: {x: 9.281535, y: 1, z: 1}
+  m_LocalScale: {x: 9.281535, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 627697786}
@@ -700,8 +700,8 @@ MonoBehaviour:
   roofCheck: {fileID: 255959213}
   roofLayer:
     serializedVersion: 2
-    m_Bits: 128
-  roofCheckRadius: 0.1
+    m_Bits: 192
+  roofCheckRadius: 0.2
   wallCheckRight: {fileID: 1960693611}
   wallCheckLeft: {fileID: 991654322}
   wallLayer:
