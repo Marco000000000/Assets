@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (isWallSliding)
             {
+                //canDoubleJump = true; // Vogliamo che possa fare il double jump durante il wall slide?
                 SideJump();
             }else if (canDoubleJump)
             {
